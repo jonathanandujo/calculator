@@ -28,74 +28,111 @@ const SimpleReturn = () => {
   }, [amount, percentage, period]);
 
   return (
-    <div className="simple-return">
-      <h2>Simple Interest Calculator Return Investment</h2>
-      <div className="input-group">
-        <label>
-          Amount:
-          <input
-            type="number"
-            value={amount}
-            onChange={(e) => setAmount(Number(e.target.value))}
-          />
-        </label>
+    <div className="simple-return-container">
+      <div className="sidebar">
+        <h3>Where to invest?</h3>
+        <table className="styled-table">
+          <thead>
+            <td>App</td>
+            <td>Yearly Rate</td>
+            <td>Limit</td>
+            <td>Availability</td>
+          </thead>
+          <tr>
+            <td>MercadoPago</td>
+            <td>15%</td>
+            <td>$23,000</td>
+            <td>Immediate</td>
+          </tr>
+          <tr>
+            <td>Nu</td>
+            <td>14.5%</td>
+            <td>$190,000</td>
+            <td>90d</td>
+          </tr>
+          <tr>
+            <td>Uala</td>
+            <td>14%</td>
+            <td>$50,000</td>
+            <td>Immediate</td>
+          </tr>
+          <tr>
+            <td>Finsus</td>
+            <td>15%</td>
+            <td>$190,000</td>
+            <td>2y</td>
+          </tr>
+        </table>
       </div>
-      <div className="input-group">
-        <label>
-          Percentage:
-          <input
-            type="number"
-            value={percentage}
-            onChange={(e) => setPercentage(Number(e.target.value))}
-          />
-        </label>
-      </div>
-      <div className="input-group">
-        <label>Calculation Period:</label>
-        <div className="radio-group">
+      <div className="simple-return">
+        <h2>Simple Interest Calculator Return Investment</h2>
+        <div className="input-group">
           <label>
+            Amount:
             <input
-              type="radio"
-              value="daily"
-              checked={period === 'daily'}
-              onChange={(e) => setPeriod(e.target.value)}
+              type="number"
+              value={amount}
+              onChange={(e) => setAmount(Number(e.target.value))}
             />
-            Daily
-          </label>
-          <label>
-            <input
-              type="radio"
-              value="weekly"
-              checked={period === 'weekly'}
-              onChange={(e) => setPeriod(e.target.value)}
-            />
-            Weekly
-          </label>
-          <label>
-            <input
-              type="radio"
-              value="monthly"
-              checked={period === 'monthly'}
-              onChange={(e) => setPeriod(e.target.value)}
-            />
-            Monthly
-          </label>
-          <label>
-            <input
-              type="radio"
-              value="yearly"
-              checked={period === 'yearly'}
-              onChange={(e) => setPeriod(e.target.value)}
-            />
-            Yearly
           </label>
         </div>
-      </div>
-      <div className="input-group">
-        <label>
-          Interest Amount:
-          <input type="number" value={interest} readOnly />
-        </label>
+        <div className="input-group">
+          <label>
+            Percentage:
+            <input
+              type="number"
+              value={percentage}
+              onChange={(e) => setPercentage(Number(e.target.value))}
+            />
+          </label>
+        </div>
+        <div className="input-group">
+          <label>Calculation Period:</label>
+          <div className="radio-group">
+            <label>
+              <input
+                type="radio"
+                value="daily"
+                checked={period === 'daily'}
+                onChange={(e) => setPeriod(e.target.value)}
+              />
+              Daily
+            </label>
+            <label>
+              <input
+                type="radio"
+                value="weekly"
+                checked={period === 'weekly'}
+                onChange={(e) => setPeriod(e.target.value)}
+              />
+              Weekly
+            </label>
+            <label>
+              <input
+                type="radio"
+                value="monthly"
+                checked={period === 'monthly'}
+                onChange={(e) => setPeriod(e.target.value)}
+              />
+              Monthly
+            </label>
+            <label>
+              <input
+                type="radio"
+                value="yearly"
+                checked={period === 'yearly'}
+                onChange={(e) => setPeriod(e.target.value)}
+              />
+              Yearly
+            </label>
+          </div>
+        </div>
+        <div className="input-group">
+          <label>
+            Interest Amount:
+            <input type="number" value={interest} readOnly />
+          </label>
+        </div>
       </div>
     </div>
   );

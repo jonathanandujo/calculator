@@ -2,14 +2,16 @@ import React, { useState } from 'react';
 import '../style/Tabs.css';
 
 import SimpleReturn from './SimpleReturn';
+import MoneyDurationCalculator from './MoneyDurationCalculator'
+import Ideas from './Ideas'
 
 const Tabs = () => {
   const [activeTab, setActiveTab] = useState(0);
 
   const tabs = [
     { title: 'Simple Return', component: <SimpleReturn /> },
-    { title: 'Another option', component: <SimpleReturn /> },
-    { title: 'more items', component: <SimpleReturn /> },
+    { title: 'Money Duration', component: <MoneyDurationCalculator /> },
+    { title: 'Ideas', component: <Ideas /> },
   ];
 
   return (
