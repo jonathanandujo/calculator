@@ -7,6 +7,15 @@ const SimpleReturn = () => {
   const [interest, setInterest] = useState(0);
   const [period, setPeriod] = useState('daily');
 
+  const formatCurrency = (value) => {
+    return `$${value.toLocaleString()}`;
+  };
+
+  const handleMoneyChange = (setter) => (e) => {
+    const value = Number(e.target.value.replace(/[^0-9.-]+/g, ""));
+    setter(value);
+  };
+
   useEffect(() => {
     let calculatedInterest = 0;
     switch (period) {
@@ -33,35 +42,39 @@ const SimpleReturn = () => {
         <h3>Where to invest?</h3>
         <table className="styled-table">
           <thead>
-            <td>App</td>
-            <td>Yearly Rate</td>
-            <td>Limit</td>
-            <td>Availability</td>
+            <tr>
+              <th>App</th>
+              <th>Yearly Rate</th>
+              <th>Limit</th>
+              <th>Availability</th>
+            </tr>
           </thead>
-          <tr>
-            <td>MercadoPago</td>
-            <td>15%</td>
-            <td>$23,000</td>
-            <td>Immediate</td>
-          </tr>
-          <tr>
-            <td>Nu</td>
-            <td>14.5%</td>
-            <td>$190,000</td>
-            <td>90d</td>
-          </tr>
-          <tr>
-            <td>Uala</td>
-            <td>14%</td>
-            <td>$50,000</td>
-            <td>Immediate</td>
-          </tr>
-          <tr>
-            <td>Finsus</td>
-            <td>15%</td>
-            <td>$190,000</td>
-            <td>2y</td>
-          </tr>
+          <tbody>
+            <tr>
+              <td>MercadoPago</td>
+              <td>15%</td>
+              <td>$23,000</td>
+              <td>Immediate</td>
+            </tr>
+            <tr>
+              <td>Nu</td>
+              <td>14.5%</td>
+              <td>$190,000</td>
+              <td>90d</td>
+            </tr>
+            <tr>
+              <td>Uala</td>
+              <td>14%</td>
+              <td>$50,000</td>
+              <td>Immediate</td>
+            </tr>
+            <tr>
+              <td>Finsus</td>
+              <td>15%</td>
+              <td>$190,000</td>
+              <td>2y</td>
+            </tr>
+          </tbody>
         </table>
       </div>
       <div className="simple-return">
@@ -70,9 +83,9 @@ const SimpleReturn = () => {
           <label>
             Amount:
             <input
-              type="number"
-              value={amount}
-              onChange={(e) => setAmount(Number(e.target.value))}
+              type="text"
+              value={formatCurrency(amount)}
+              onChange={handleMoneyChange(setAmount)}
             />
           </label>
         </div>
@@ -130,7 +143,7 @@ const SimpleReturn = () => {
         <div className="input-group">
           <label>
             Interest Amount:
-            <input type="number" value={interest} readOnly />
+            <input type="text" value={formatCurrency(interest)} readOnly />
           </label>
         </div>
       </div>
